@@ -5,12 +5,12 @@
 
 export const environment = {
   production: false,
-  firebase: {
-  	apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: ""
+  firebaseConfig: {
+  	 apiKey: "AIzaSyA0vNKKN0rSEqS-yddAfM_MTvoA5HSiKr8",
+    authDomain: "firestore-crudd.firebaseapp.com",
+    databaseURL: "https://firestore-crudd.firebaseio.com",
+    projectId: "firestore-crudd",
+    storageBucket: "firestore-crudd.appspot.com",
+    messagingSenderId: "47613384541"
   }
 };
