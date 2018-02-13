@@ -2,31 +2,47 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { environment } from '../environments/environment.prod';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemsComponent } from './components/items/items.component';
 
-import { ItemService } from './services/item.service';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
+///// Start FireStarter
+
+// Core
+import { CoreModule } from './core/core.module';
+
+// Shared/Widget
+import { SharedModule } from './shared/shared.module';
+
+// Feature Modules
+import { ItemModule } from './items/shared/item.module';
+import { UploadModule } from './uploads/shared/upload.module';
+import { UiModule } from './ui/shared/ui.module';
+import { NotesModule } from './notes/notes.module';
+///// End FireStarter
+
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from 'angularfire2';
+export const firebaseConfig = environment.firebaseConfig;
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent,
-    NavbarComponent,
-    AddItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
-    AngularFirestoreModule
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    ItemModule,
+    UiModule,
+    NotesModule,
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
-  providers: [ItemService],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+  ],
 })
 export class AppModule { }
